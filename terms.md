@@ -10,4 +10,5 @@ By inviting or using this bot ("the Bot"), you agree to the following:
 
 ## Contact
 For questions or support, please join the support server:  
-[Your Support Server Invite Link]
+https://discord.gg/jasNSgMmmU
+
