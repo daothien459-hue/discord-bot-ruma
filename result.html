@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verification Result</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      background: #2c2f33; 
+      color: white; 
+      padding-top: 100px;
+    }
+    .success { color: #57F287; font-size: 24px; }
+    .fail { color: #ED4245; font-size: 24px; }
+  </style>
+</head>
+<body>
+  <h1>Verification Result</h1>
+  <p>Hello, <strong>{{ username }}</strong>!</p>
+  {% if verified %}
+    <p class="success">✅ You are verified!</p>
+  {% else %}
+    <p class="fail">❌ You are not verified.</p>
+  {% endif %}
+</body>
+</html>
