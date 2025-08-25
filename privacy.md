@@ -16,4 +16,5 @@ This bot ("the Bot") only stores the minimum amount of data required for its fun
 
 ## Contact
 If you have any questions about this Privacy Policy, please contact me through the support server:  
-[Your Support Server Invite Link]
+  https://discord.gg/jasNSgMmmU
+
