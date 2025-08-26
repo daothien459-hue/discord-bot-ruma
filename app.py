@@ -7,9 +7,9 @@ import requests
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-CLIENT_ID = os.getenv("DISCORD_CLIENT_ID")
-CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET")
-REDIRECT_URI = "https://<your-domain>/callback"  # Thay bằng domain deploy
+CLIENT_ID = os.getenv("1395333135805452289")
+CLIENT_SECRET = os.getenv("sRzTDEcRdvJQeFa4wDFB1WuwN0bPhDTc")
+REDIRECT_URI = "https://discord.com/oauth2/authorize?client_id=1395333135805452289&response_type=code&redirect_uri=https%3A%2F%2Fdiscord-bot-ruma.onrender.com&scope=identify"  # Thay bằng domain deploy
 DISCORD_API = "https://discord.com/api"
 
 
@@ -34,8 +34,8 @@ def login():
 def callback(request: Request, code: str):
     # Lấy access token từ code
     data = {
-        "client_id": 1395333135805452289,
-        "client_secret": -YeTyp0H_th-yRlSYxRkLFca8MD3EB6R,
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
         "grant_type": "authorization_code",
         "code": code,
         "redirect_uri": REDIRECT_URI,
@@ -64,3 +64,4 @@ def callback(request: Request, code: str):
             "verified": verified,
         },
     )
+
