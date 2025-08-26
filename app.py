@@ -5,18 +5,26 @@ import requests
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "supersecretkey")  # Thay secret key thật khi deploy
 
-# Discord OAuth Config
 DISCORD_CLIENT_ID = os.getenv("DISCORD_CLIENT_ID", "YOUR_CLIENT_ID")
 DISCORD_CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET", "YOUR_CLIENT_SECRET")
 DISCORD_REDIRECT_URI = os.getenv("DISCORD_REDIRECT_URI", "http://127.0.0.1:5000/callback")
 DISCORD_API_ENDPOINT = "https://discord.com/api"
 
-
 @app.route("/")
 def home():
-    """Trang chính: nút đăng nhập"""
     return render_template("login.html", client_id=DISCORD_CLIENT_ID, redirect_uri=DISCORD_REDIRECT_URI)
 
+@app.route("/login")
+def login():
+    """Chuyển hướng tới Discord OAuth"""
+    discord_oauth_url = (
+        f"{DISCORD_API_ENDPOINT}/oauth2/authorize"
+        f"?client_id={DISCORD_CLIENT_ID}"
+        f"&redirect_uri={DISCORD_REDIRECT_URI}"
+        f"&response_type=code"
+        f"&scope=identify"
+    )
+    return redirect(discord_oauth_url)
 
 @app.route("/callback")
 def callback():
@@ -61,7 +69,6 @@ def callback():
 
     return redirect(url_for("beach"))
 
-
 @app.route('/beach')
 def beach():
     """Trang nền bãi biển với user info"""
@@ -71,14 +78,11 @@ def beach():
     })
     return render_template('beach.html', username=user["username"], avatar_url=user["avatar_url"])
 
-
 @app.route("/user-info")
 def user_info():
     """API trả thông tin user cho front-end"""
     return session.get("user", {})
 
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
-
 
