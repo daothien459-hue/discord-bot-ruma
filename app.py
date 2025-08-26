@@ -5,9 +5,9 @@ import requests
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "supersecretkey")  # Thay secret key thật khi deploy
 
-DISCORD_CLIENT_ID = os.getenv("DISCORD_CLIENT_ID", "YOUR_CLIENT_ID")
-DISCORD_CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET", "YOUR_CLIENT_SECRET")
-DISCORD_REDIRECT_URI = os.getenv("DISCORD_REDIRECT_URI", "http://127.0.0.1:5000/callback")
+DISCORD_CLIENT_ID = 1395333135805452289
+DISCORD_CLIENT_SECRET = sRzTDEcRdvJQeFa4wDFB1WuwN0bPhDTc
+DISCORD_REDIRECT_URI = https://discord.com/oauth2/authorize?client_id=1395333135805452289&response_type=code&redirect_uri=https%3A%2F%2Fdiscord-bot-ruma.onrender.com&scope=identify
 DISCORD_API_ENDPOINT = "https://discord.com/api"
 
 @app.route("/")
@@ -85,4 +85,5 @@ def user_info():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
+
 
